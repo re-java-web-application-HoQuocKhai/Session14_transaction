@@ -19,13 +19,16 @@ public class TransactionLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "from_account_id")
     private Long fromAccountId;
 
+    @Column(name = "to_account_id")
     private Long toAccountId;
 
     private double amount;
 
     private String status;
 
+    @Column(name = "created_at")
     private LocalDate createdAt;
 }

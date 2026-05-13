@@ -30,6 +30,7 @@ public class HibernateConfig {
         props.put("hibernate.dialect", env.getProperty("spring.jpa.properties.hibernate.dialect"));
         props.put("hibernate.show_sql", env.getProperty("spring.jpa.properties.hibernate.show_sql"));
         props.put("hibernate.hbm2ddl.auto", env.getProperty("spring.jpa.properties.hibernate.hbm2ddl.auto"));
+        props.put("hibernate.current_session_context_class", env.getProperty("spring.jpa.properties.hibernate.current_session_context_class", "thread"));
         sessionFactory.setHibernateProperties(props);
         return sessionFactory;
     }
