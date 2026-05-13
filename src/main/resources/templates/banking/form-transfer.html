@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chuyển Tiền</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Form Chuyển Tiền</h2>
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+    
+    <form action="/bank/transfer" method="post">
+        <div class="form-group">
+            <label for="fromId">Từ tài khoản (ID): </label>
+            <input type="number" id="fromId" name="fromId" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="toId">Đến tài khoản (ID): </label>
+            <input type="number" id="toId" name="toId" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="amount">Số tiền: </label>
+            <input type="number" step="0.01" id="amount" name="amount" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Chuyển Tiền</button>
+        <a href="/bank/accounts" class="btn btn-secondary">Quay lại danh sách</a>
+    </form>
+</div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

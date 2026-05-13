@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lịch sử giao dịch</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Lịch sử giao dịch</h2>
+    <div class="mb-3">
+        <a href="/bank/accounts" class="btn btn-secondary">Quay lại danh sách</a>
+    </div>
+
+    <div th:if="${#lists.isEmpty(logs)}" class="text-center">
+        <h3 class="text-warning">Chưa có giao dịch nào</h3>
+    </div>
+
+    <table th:if="${!#lists.isEmpty(logs)}" class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Từ Tài khoản</th>
+            <th>Đến Tài khoản</th>
+            <th>Số tiền</th>
+            <th>Trạng thái</th>
+            <th>Ngày tạo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="log : ${logs}">
+            <td th:text="${log.id}"></td>
+            <td th:text="${log.fromAccountId}"></td>
+            <td th:text="${log.toAccountId}"></td>
+            <td th:text="${log.amount}"></td>
+            <td th:text="${log.status}"></td>
+            <td th:text="${log.createdAt}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
